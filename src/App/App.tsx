@@ -39,11 +39,18 @@ class App extends React.Component<AppProps, AppState> {
     }).then(this.updateListContent);
   }
 
+  updateNote = (note:Note) => {
+    this.repository.update(note).then(this.updateListContent);
+  }
+
+  deleteNote = (id:string) => {
+    this.repository.delete(id).then(this.updateListContent);
+  }
   public render() {
     return (
       <div className="App">
         <AppHeader></AppHeader>
-        <NoteList notes={this.state.notes}></NoteList>
+        <NoteList notes={this.state.notes} onNoteChanged={this.updateNote} onNodeDeleted={this.deleteNote}></NoteList>
         <FloatingButton onClick={this.addNote} text="add"></FloatingButton>
       </div>
     );

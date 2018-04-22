@@ -4,7 +4,9 @@ import './noteList';
 import { NoteListItem } from './noteListItem/noteListItem';
 
 export interface NoteListProps {
-    notes: Note[]
+    notes: Note[];
+    onNoteChanged: (note:Note) => void;
+    onNodeDeleted: (id:string) => void;
 }
 export interface NoteListState {
     notes: Note[],
@@ -26,10 +28,10 @@ export class NoteList extends React.Component<NoteListProps, NoteListState> {
         notes: nextProps.notes
         };
       }
-
+    
     public render() {
         return <ul>
-            {this.state.notes.map(n => <NoteListItem note={n} active={false}></NoteListItem>)}
+            {this.state.notes.map(n => <NoteListItem note={n} active={false} onChange={this.props.onNoteChanged} onDelete={() => { this.props.onNodeDeleted(n.id || "") }}></NoteListItem>)}
         </ul>;
     }
 
