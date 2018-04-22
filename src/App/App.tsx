@@ -1,19 +1,50 @@
 import * as React from 'react';
 import './App.css';
+import { AppHeader } from './appHeader/appHeader';
+import { FloatingButton } from '../components/floatingButton/floatingButton';
+import { Note } from '../models/note';
+import { NoteList } from './noteList/noteList';
+import { NoteRepository } from '../repositories/noteRepository';
 
-import logo from './logo.svg';
 
-class App extends React.Component {
+interface AppProps {
+}
+interface AppState {
+  notes:Note[]
+}
+
+class App extends React.Component<AppProps, AppState> {
+  private readonly repository:NoteRepository = new NoteRepository();
+
+  constructor(public props:AppProps) {
+    super(props);
+    this.state = {
+      notes: []
+    };
+  }
+  componentDidMount() {
+    this.updateListContent();
+  }
+  updateListContent = () => {
+    this.repository.getAll().then((notes) => {
+      this.setState({notes});
+    })
+  }
+
+  addNote = () => {
+    this.repository.add({
+      title: "New note",
+      content: "",
+      tags: []
+    }).then(this.updateListContent);
+  }
+
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <AppHeader></AppHeader>
+        <NoteList notes={this.state.notes}></NoteList>
+        <FloatingButton onClick={this.addNote} text="add"></FloatingButton>
       </div>
     );
   }
