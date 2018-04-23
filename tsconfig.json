@@ -15,7 +15,14 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "baseUrl": "src", // This must be specified if "paths" is.
+    "paths": {
+        "@components/*": ["components/*"],
+        "@app/*": ["app/*"],
+        "@repositories/*": ["repositories/*"],
+        "@models/*": ["models/*"]
+    }
   },
   "exclude": [
     "node_modules",
