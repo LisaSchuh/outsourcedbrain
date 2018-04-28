@@ -21,7 +21,8 @@
         "@components/*": ["components/*"],
         "@app/*": ["app/*"],
         "@repositories/*": ["repositories/*"],
-        "@models/*": ["models/*"]
+        "@models/*": ["models/*"],
+        "@config/*": ["config/*"]
     }
   },
   "exclude": [
