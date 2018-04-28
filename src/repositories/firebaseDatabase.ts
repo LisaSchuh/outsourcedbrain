@@ -1,5 +1,6 @@
 import * as firebase from "firebase";
 require("firebase/firestore");
+import firebaseApp from "@config/firebaseApp"; 
 import { Note } from "@models/note";
 
 class FirebaseDatabase {
@@ -7,17 +8,7 @@ class FirebaseDatabase {
     private readonly noteCollection:string = "notes";
 
     constructor() {
-        // Initialize Firebase
-        var config = {
-            apiKey: "",
-            authDomain: "",
-            databaseURL: "",
-            projectId: "",
-            storageBucket: "",
-            messagingSenderId: ""
-        };
-        firebase.initializeApp(config);
-        this.db = firebase.firestore();
+        this.db = firebaseApp.firestore();
     }
 
     get():Promise<firebase.firestore.QuerySnapshot> {

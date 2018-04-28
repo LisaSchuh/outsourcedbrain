@@ -9,7 +9,7 @@
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
@@ -21,7 +21,8 @@
         "@components/*": ["components/*"],
         "@app/*": ["app/*"],
         "@repositories/*": ["repositories/*"],
-        "@models/*": ["models/*"]
+        "@models/*": ["models/*"],
+        "@config/*": ["config/*"]
     }
   },
   "exclude": [

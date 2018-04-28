@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './App.css';
+import './outsourcedBrain.css';
 import { AppHeader } from './appHeader/appHeader';
 import { FloatingButton } from '../components/floatingButton/floatingButton';
 import { Note } from '../models/note';
@@ -7,16 +7,16 @@ import { NoteList } from './noteList/noteList';
 import { NoteRepository } from '../repositories/noteRepository';
 
 
-interface AppProps {
+interface OutsourcedBrainProps {
 }
-interface AppState {
+interface OutsourcedBrainState {
   notes:Note[]
 }
 
-class App extends React.Component<AppProps, AppState> {
+class OutsourcedBrain extends React.Component<OutsourcedBrainProps, OutsourcedBrainState> {
   private readonly repository:NoteRepository = new NoteRepository();
 
-  constructor(public props:AppProps) {
+  constructor(public props:OutsourcedBrainProps) {
     super(props);
     this.state = {
       notes: []
@@ -48,7 +48,7 @@ class App extends React.Component<AppProps, AppState> {
   }
   public render() {
     return (
-      <div className="App">
+      <div className="OutsourcedBrain">
         <AppHeader></AppHeader>
         <NoteList notes={this.state.notes} onNoteChanged={this.updateNote} onNodeDeleted={this.deleteNote}></NoteList>
         <FloatingButton onClick={this.addNote} text="add"></FloatingButton>
@@ -57,4 +57,4 @@ class App extends React.Component<AppProps, AppState> {
   }
 }
 
-export default App;
+export default OutsourcedBrain;
