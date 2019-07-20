@@ -1,25 +1,19 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { get } from "./logic/noteService";
-import { List, Typography } from "antd";
+import { get, Note } from "./logic/noteService";
 
 const App: React.FC = () => {
-  const notes = get().map(n => n.text);
+  const notes = get();
+  const renderNotes = (notes: Note[]): JSX.Element[] => {
+    return notes.map(n => <li>{n.text}</li>);
+  };
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <List
-          bordered
-          dataSource={notes}
-          renderItem={item => (
-            <List.Item>
-              <Typography.Text mark>[ITEM]</Typography.Text> {item}
-            </List.Item>
-          )}
-        />
       </header>
+      <ul>{renderNotes(notes)}</ul>
     </div>
   );
 };
