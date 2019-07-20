@@ -47,6 +47,7 @@ const App: React.FC = () => {
       <AppHeader>
         <AppLogo src={logo} className="App-logo" alt="logo" />
       </AppHeader>
+      <h1>let's change things up</h1>
       <ul>{renderNotes(notes)}</ul>
     </AppStyled>
   );
