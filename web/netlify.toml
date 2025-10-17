@@ -1,8 +1,0 @@
-[[headers]]
-  for = "/*.svg"
-  [headers.values]
-    Cache-Control = "public, s-max-age=604800, max-age=604800"
-[[headers]]
-  for = "/*.ico"
-  [headers.values]
-    Cache-Control = "public, s-max-age=604800, max-age=604800"
